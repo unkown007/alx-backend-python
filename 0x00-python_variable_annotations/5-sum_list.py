@@ -8,7 +8,4 @@ def sum_list(input_list: list[float]) -> float:
         input_list(list[int]): list of floats
     Return: sum of all elements
     """
-    total: float = 0.0
-    for x in input_list:
-        total += x
-    return float(total)
+    return float(sum(input_list))
