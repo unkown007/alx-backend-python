@@ -3,10 +3,10 @@
 import math
 
 
-def floor(n: float) -> float:
+def floor(n: float) -> int:
     """ Computes mathematical floor
     Args:
         n(float): float number
-    Return: Floor of a float number
+    Return: an integer number
     """
     return math.floor(n)
