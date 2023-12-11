@@ -15,7 +15,7 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
         max_delay(int): maximum delay
     Return: list of floats of spawn numbers
     """
-    spawn_number: list = []
-    for _ in range(n):
-        spawn_number.append(await wait_random(max_delay))
+    spawn_number = await asyncio.gather(
+        *tuple(map(lambda _: wait_random(max_delay), range(n)))
+    )
     return sorted(spawn_number)
