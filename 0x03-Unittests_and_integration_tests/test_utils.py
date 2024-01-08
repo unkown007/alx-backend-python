@@ -25,6 +25,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",)),
         ({"a": 1}, ("a", "b")),
     ])
-    def test_access_nested_map_exception(self, nested_map, path):
+    def test_access_nested_map_exception(self, _map, path):
         """ Raise KeyError when some inputs are expected """
-        self.assertRaises(KeyError, msg="Invalid key")
+        with self.assertRaises(KeyError, msg="Invalid key"):
+            nested_map(_map, path)
