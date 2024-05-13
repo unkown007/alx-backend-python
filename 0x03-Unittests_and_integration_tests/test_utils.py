@@ -6,7 +6,7 @@ from typing import Dict
 from unittest.mock import patch, Mock
 import unittest
 
-from utils import (nested_map, get_json)
+from utils import (access_nested_map, get_json)
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -20,7 +20,7 @@ class TestAccessNestedMap(unittest.TestCase):
     ])
     def test_access_nested_map(self, _map, path, expected):
         """ Test Nested Map return the expected value """
-        self.assertEqual(nested_map(_map, path), expected)
+        self.assertEqual(access_nested_map(_map, path), expected)
 
     @parameterized.expand([
         ({}, ("a",), "Invalid key"),
@@ -29,13 +29,13 @@ class TestAccessNestedMap(unittest.TestCase):
     def test_access_nested_map_exception(self, _map, path, expected):
         """ Raise KeyError when some inputs are expected """
         with self.assertRaises(KeyError, msg=expected):
-            nested_map(_map, path)
+            access_nested_map(_map, path)
 
 
 class TestGetJson(unittest.TestCase):
     """" Implements the TestGetJson.test_get_json """
 
-    @parametized.expand([
+    @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
     ])
